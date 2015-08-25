@@ -19,7 +19,7 @@ abstract class BaseActivity : ActionBarActivity() {
     abstract val mContentLayoutResourceId: Int
 
     //static instantiate
-    class object {
+    companion object {
         public fun newIntent(context: Context): Intent {
             return Intent(context, javaClass<BaseActivity>())
         }

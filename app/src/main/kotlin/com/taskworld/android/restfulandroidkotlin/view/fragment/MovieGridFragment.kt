@@ -48,7 +48,7 @@ class MovieGridFragment : BaseSpiceFragment() {
     var mCategory = ""
     val mBus = EventBus()
 
-    class object {
+    companion object {
         val ARG_MOVIE_CATEGORY = "movie_category"
 
         fun newInstance(action: String): MovieGridFragment {
@@ -71,7 +71,7 @@ class MovieGridFragment : BaseSpiceFragment() {
         //set adapter
         rvMovie.setAdapter(mMovieAdapter)
 
-        val client = ResourceClient.Builder()
+        val client = ResourceClient.Companion.Builder()
                 .setRouter(ResourceRouterImpl.newInstance(mCategory))
                 .setRealm(Realm.getInstance(getActivity()))
                 .setEventBus(mBus)
@@ -160,7 +160,7 @@ class MovieGridFragment : BaseSpiceFragment() {
         }
 
         inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            {
+            init {
                 itemView.setOnClickListener { view -> onItemClick(getPosition()) }
             }
 

@@ -12,7 +12,7 @@ import io.realm.RealmResults
 import io.realm.RealmQuery
 import com.taskworld.android.restfulandroidkotlin.resource.router.ResourceRouterImpl
 
-class ResourceClient(builder: ResourceClient.Builder) {
+class ResourceClient(builder: ResourceClient.Companion.Builder) {
 
     private var mSpiceManager: SpiceManager?
     private var mResourceRouter: ResourceRouter
@@ -20,18 +20,18 @@ class ResourceClient(builder: ResourceClient.Builder) {
     private var mBus: EventBus
 
     //initialize
-    {
+    init {
         mSpiceManager = builder.manager
         mResourceRouter = builder.router ?: ResourceRouterImpl.newInstance()
         mRealm = builder.realm
         mBus = builder.bus ?: EventBus.getDefault()
     }
 
-    class object {
+    companion object {
         private val REQUEST_PACKAGE = "com.taskworld.android.restfulandroidkotlin.network.request"
         private val REQUEST_CLASS_SUFFIX = "SpiceRequest"
 
-        inner class Builder {
+        class Builder {
 
             var manager: SpiceManager? = null
             var router: ResourceRouter? = null

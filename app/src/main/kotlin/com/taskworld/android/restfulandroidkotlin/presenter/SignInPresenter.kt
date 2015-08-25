@@ -24,7 +24,7 @@ class SignInPresenterImpl(val mAction: SignInUIAction, val mSpiceManager: SpiceM
 
     var mInteractor: SignInInteractor
 
-    {
+    init {
         mInteractor = SignInInteractorImpl(mSpiceManager, mBus)
     }
 

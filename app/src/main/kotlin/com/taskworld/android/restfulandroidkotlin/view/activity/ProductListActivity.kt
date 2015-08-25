@@ -41,7 +41,7 @@ class ProductListActivity : BaseActivity() {
         mProductAdapter.notifyDataSetChanged()
     })
 
-    class object {
+    companion  object {
         public fun newInstance(context: Context): Intent {
             return Intent(context, javaClass<ProductListActivity>())
         }

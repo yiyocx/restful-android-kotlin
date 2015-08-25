@@ -59,7 +59,7 @@ class MovieDetailActivity : BaseSpiceActivity() {
         mMovieCoverAdapter.data = newCoverImages
     })
 
-    class object {
+    companion object {
         val ARG_MOVIE_ID = "movie_id"
 
         public fun newIntent(context: Context, id: Int): Intent {
@@ -87,17 +87,17 @@ class MovieDetailActivity : BaseSpiceActivity() {
         rvMovieCast.setLayoutManager(createLayoutManager())
         rvMovieCast.setAdapter(mMovieCastAdapter)
 
-        var client = ResourceClient.Builder()
+        var client = ResourceClient.Companion.Builder()
                 .setRouter(ResourceRouterImpl.newInstance(null, "credits"))
                 .setSpiceManager(getServiceSpiceManager()).build()
         client.find(javaClass<Movie>(), mMovieId.toString())
 
-        client = ResourceClient.Builder()
+        client = ResourceClient.Companion.Builder()
                 .setRouter(ResourceRouterImpl.newInstance())
                 .setSpiceManager(getServiceSpiceManager()).build()
         client.find(javaClass<Movie>(), mMovieId.toString())
 
-        client = ResourceClient.Builder()
+        client = ResourceClient.Companion.Builder()
                 .setRouter(ResourceRouterImpl.newInstance(null, "images"))
                 .setSpiceManager(getServiceSpiceManager()).build()
         client.find(javaClass<Movie>(), mMovieId.toString())

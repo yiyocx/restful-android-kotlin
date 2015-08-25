@@ -31,7 +31,7 @@ trait ResourceRouter {
 
 class ResourceRouterImpl private (override val extraPathForList: String?, override val extraPathForSingle: String?) : ResourceRouter {
 
-    class object {
+    companion object {
         fun newInstance() = ResourceRouterImpl(null, null)
         fun newInstance(extraPath: String?) = ResourceRouterImpl(extraPath, null)
         fun newInstance(extraPathForList: String?, extraPathForSingle: String?) = ResourceRouterImpl(extraPathForList, extraPathForSingle)

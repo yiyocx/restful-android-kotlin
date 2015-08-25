@@ -10,7 +10,7 @@ import de.greenrobot.event.EventBus
 
 class EventBusRequestListener<T> private (val bus: EventBus) : RequestListener<T> {
 
-    class object {
+    companion object {
         fun newInstance<T>(): EventBusRequestListener<T> {
             return EventBusRequestListener(EventBus.getDefault())
         }

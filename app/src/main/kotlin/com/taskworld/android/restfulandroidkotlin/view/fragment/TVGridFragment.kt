@@ -41,7 +41,7 @@ class TVGridFragment : BaseSpiceFragment() {
     var mCategory = ""
     val mBus = EventBus()
 
-    class object {
+    companion object {
         val ARG_TV_CATEGORY = "tv_category"
 
         fun newInstance(category: String): TVGridFragment {
@@ -62,7 +62,7 @@ class TVGridFragment : BaseSpiceFragment() {
         //set adapter
         rvTV.setAdapter(mTVAdapter)
 
-        val client = ResourceClient.Builder()
+        val client = ResourceClient.Companion.Builder()
                 .setRouter(ResourceRouterImpl.newInstance(mCategory))
                 .setRealm(Realm.getInstance(getActivity()))
                 .setEventBus(mBus)
@@ -113,7 +113,7 @@ class TVGridFragment : BaseSpiceFragment() {
         }
 
         inner class TVViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            {
+            init {
                 itemView.setOnClickListener { view -> onItemClick(getPosition()) }
             }
 

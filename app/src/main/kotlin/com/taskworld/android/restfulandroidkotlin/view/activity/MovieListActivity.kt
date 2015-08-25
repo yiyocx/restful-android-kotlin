@@ -42,7 +42,7 @@ class MovieListActivity : BaseSpiceActivity() {
 
     val mRealm by Delegates.lazy { Realm.getInstance(this) }
 
-    class object {
+    companion object {
         public fun newIntent(context: Context): Intent {
             return Intent(context, javaClass<MovieListActivity>())
         }
@@ -51,7 +51,7 @@ class MovieListActivity : BaseSpiceActivity() {
     override fun setUp() {
         mItems.clear()
         lvMovie.setAdapter(mMovieAdapter)
-        val client = ResourceClient.Builder()
+        val client = ResourceClient.Companion.Builder()
                 .setRealm(mRealm)
                 .setRouter(ResourceRouterImpl.newInstance("now_playing"))
                 .setSpiceManager(getServiceSpiceManager()).build()
@@ -61,7 +61,7 @@ class MovieListActivity : BaseSpiceActivity() {
     fun onEvent(items: Movie.ResultList) {
         mItems = items.getResults().toArrayList()
 
-        val client = ResourceClient.Builder()
+        val client = ResourceClient.Companion.Builder()
                 .setRealm(mRealm)
                 .setRouter(ResourceRouterImpl.newInstance())
                 .setSpiceManager(getServiceSpiceManager()).build()
